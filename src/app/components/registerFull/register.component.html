@@ -1,0 +1,209 @@
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <h2>Registration Form</h2>
+    <form #form="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" name="name" class="form-control" [(ngModel)]="user.user_name" 
+         required #nameField="ngModel" 
+         (blur)="onBlur(nameField)"
+         [class.field-error]="form.submitted && nameField.invalid" />
+      </div>
+      <div [hidden]="!form.submitted || nameField.valid" class="alert alert-danger">
+        Name is Mandatory
+      </div> 
+
+      <div class="form-group">
+        <label for="pwd">Password</label>
+        <input id="pwd" name="pwd" class="form-control" [(ngModel)]="user.user_password" 
+         required #pwd="ngModel" 
+         (blur)="onBlur(pwd)"
+         [class.field-error]="form.submitted && pwd.invalid" />
+      </div>
+      <div [hidden]="!form.submitted || nameField.valid" class="alert alert-danger">
+        Password is Mandatory
+      </div> 
+      
+      <div class="form-group">
+        <label for="fname">First Name</label>
+        <input id="fname" name="fname" class="form-control" [(ngModel)]="user.user_details.first_name" 
+         required #fname="ngModel" 
+         (blur)="onBlur(fname)"
+         [class.field-error]="form.submitted && fname.invalid" />
+      </div>
+      <div [hidden]="!form.submitted || fname.valid" class="alert alert-danger">
+        First Name is Mandatory
+      </div>   
+
+      <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input id="lname" name="fname" class="form-control" [(ngModel)]="user.user_details.last_name" 
+         required #lname="ngModel" 
+         (blur)="onBlur(lname)"
+         [class.field-error]="form.submitted && lname.invalid" />
+      </div>
+      <div [hidden]="!form.submitted || lname.valid" class="alert alert-danger">
+        Last Name is Mandatory
+      </div>   
+
+
+      
+      <p>Gender</p>
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="interfaceStyle" id="lightInterface" value="Male"
+            [(ngModel)]="user.user_details.gender">
+          <label class="form-check-label" for="lightInterface">
+            Male
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="interfaceStyle" id="mediumInterface" value="Female"
+            [(ngModel)]="user.user_details.gender">
+          <label class="form-check-label" for="mediumInterface">
+            Female
+          </label>
+        </div>
+        
+      </div> 
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" name="email" class="form-control" [(ngModel)]="user.user_details.email" 
+         required #email="ngModel" 
+         (blur)="onBlur(email)"
+         [class.field-error]="form.submitted && email.invalid" />
+      </div>
+      <div [hidden]="!form.submitted || email.valid" class="alert alert-danger">
+        Email is Mandatory
+      </div>  
+      
+      <div class="form-group">
+        <label for="ssc">SSC Board Name</label>
+        <input id="ssc" name="ssc" class="form-control" [(ngModel)]="user.user_education.ssc_board_name" 
+         required #ssc="ngModel" 
+         (blur)="onBlur(ssc)"
+         [class.field-error]="form.submitted && ssc.invalid" />
+      </div>
+      <div [hidden]="!form.submitted || ssc.valid" class="alert alert-danger">
+        SSC Board Name is Mandatory
+      </div> 
+      
+      <div class="form-group">
+        <label for="hsc">HSC Board Name</label>
+        <input id="hsc" name="hsc" class="form-control" [(ngModel)]="user.user_education.hsc_board_name" 
+         required #hsc="ngModel" 
+         (blur)="onBlur(hsc)"
+         [class.field-error]="form.submitted && hsc.invalid" />
+      </div>
+      <div [hidden]="!form.submitted || hsc.valid" class="alert alert-danger">
+        HSC Board Name is Mandatory
+      </div>
+
+      <div class="form-group">
+        <label for="sscp">SSC Percentage</label>
+        <input id="sscp" name="sscp" class="form-control" [(ngModel)]="user.user_education.ssc_percentage" 
+         required #sscp="ngModel" 
+         (blur)="onBlur(sscp)"
+         [class.field-error]="form.submitted && sscp.invalid" />
+      </div>
+      <div [hidden]="!form.submitted || sscp.valid" class="alert alert-danger">
+        SSC Percentage is Mandatory
+      </div>
+
+      <div class="form-group">
+        <label for="hscp">HSC Percentage</label>
+        <input id="hscp" name="hscp" class="form-control" [(ngModel)]="user.user_education.hsc_percentage" 
+         required #hscp="ngModel" 
+         (blur)="onBlur(hscp)"
+         [class.field-error]="form.submitted && hscp.invalid" />
+      </div>
+      <div [hidden]="!form.submitted || hscp.valid" class="alert alert-danger">
+        HSC Percentage is Mandatory
+      </div>
+
+      <div class="form-group">
+        <label for="u">University Name</label>
+        <input id="u" name="u" class="form-control" [(ngModel)]="user.user_education.university_name" 
+         required #u="ngModel" 
+         (blur)="onBlur(u)"
+         [class.field-error]="form.submitted && u.invalid" />
+      </div>
+      <div [hidden]="!form.submitted || u.valid" class="alert alert-danger">
+        SSC Percentage is Mandatory
+      </div>
+
+      <div class="form-group">
+        <label for="cgpa">CGPA</label>
+        <input id="cgpa" name="cgpa" class="form-control" [(ngModel)]="user.user_education.cgpa" 
+         required #cgpa="ngModel" 
+         (blur)="onBlur(cgpa)"
+         [class.field-error]="form.submitted && cgpa.invalid" />
+      </div>
+      <div [hidden]="!form.submitted || cgpa.valid" class="alert alert-danger">
+        CGPA is Mandatory
+      </div>
+
+      <div class="form-group">
+        <label for="cname">Company Name</label>
+        <input id="cname" name="cname" class="form-control" [(ngModel)]="user.user_employment[0].company_name" 
+          />
+      </div>
+      <div class="form-group">
+        <label for="sdate">Start date</label>
+        <input type="date" id="sdate" name="sdate" class="form-control" [(ngModel)]="user.user_employment[0].start_date" 
+          />
+      </div>
+      <div class="form-group">
+        <label for="edate">End Date</label>
+        <input type="date" id="edate" name="edate" class="form-control" [(ngModel)]="user.user_employment[0].end_date" 
+          />
+      </div>
+      
+       <div class="form-group">
+        <label for="tech">Technology</label>
+        <select class="form-control" id="tech" name="tech"
+          [(ngModel)]="user.user_employment[0].technology">
+          <option>Java</option>
+          <option>Android</option>
+          <option>Angular</option>
+        </select>
+      </div> 
+
+      <div class="form-group">
+        <label for="cname">Company Name</label>
+        <input id="cname" name="cname" class="form-control" [(ngModel)]="user.user_employment[1].company_name" 
+          />
+      </div>
+      <div class="form-group">
+        <label for="sdate">Start date</label>
+        <input type="date" id="sdate" name="sdate" class="form-control" [(ngModel)]="user.user_employment[1].start_date" 
+          />
+      </div>
+      <div class="form-group">
+        <label for="edate">End Date</label>
+        <input type="date" id="edate" name="edate" class="form-control" [(ngModel)]="user.user_employment[1].end_date" 
+          />
+      </div>
+      
+       <div class="form-group">
+        <label for="tech">Technology</label>
+        <select class="form-control" id="tech" name="tech"
+          [(ngModel)]="user.user_employment[1].technology">
+          <option>Java</option>
+          <option>Android</option>
+          <option>Angular</option>
+        </select>
+      </div> 
+      
+      
+      <button class="btn btn-primary" (click)="registerNow()">Register</button>
+    </form>
+  </div> 
+
+

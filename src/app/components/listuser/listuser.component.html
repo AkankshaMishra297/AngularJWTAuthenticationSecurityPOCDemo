@@ -1,0 +1,85 @@
+
+<ng-template #no_data_templ>
+  {{errorMessage}}
+</ng-template>
+ <div class="container" *ngIf="flag;else no_data_templ">
+  <legend class="text-center" style="color:red">User List
+    </legend>
+<table class = "table table-striped" >
+  <thead>
+    <th style ="padding-right:10px">User Name</th>
+    <th  style ="padding-right:10px">Active</th>
+    <th  style ="padding-right:10px">First Name</th>
+    <th  style ="padding-right:10px">Last Name</th>
+    <th  style ="padding-right:10px">Email</th>
+    <th  style ="padding-right:10px">Gender</th>
+    <th  style ="padding-right:10px">SSC Board Name</th>
+    <th  style ="padding-right:10px">SSC Percentage</th>
+    <th  style ="padding-right:10px">HSC Board Name</th>
+    <th  style ="padding-right:10px">HSC Percentage</th>
+    <th  style ="padding-right:10px">University Name</th>
+    <th  style ="padding-right:10px">CGPA</th>
+     <th  style ="padding-right:10px">Company Name</th>
+     <th  style ="padding-right:10px">Technology</th> 
+     <th  style ="padding-right:10px">Start Date</th> 
+     <th  style ="padding-right:10px">End Date</th> 
+
+ 
+    <th  style ="padding-right:10px">Operations</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users.response_data.user_info">
+     
+          <td>{{user.user_name}}</td>
+          <td>{{user.active}}</td>
+          <td>{{user.user_details.first_name}}</td> 
+          <td>{{user.user_details.last_name}}</td>
+          <td>{{user.user_details.email}}</td>
+          <td>{{user.user_details.gender}}</td>
+          <td>{{user.user_education.ssc_board_name}}</td>
+          <td>{{user.user_education.ssc_percentage}}</td>
+          <td>{{user.user_education.hsc_board_name}}</td>
+          <td>{{user.user_education.hsc_percentage}}</td>
+          <td>{{user.user_education.university_name}}</td>
+          <td>{{user.user_education.cgpa}}</td>
+
+          <td style="padding-left: 25px; color:dimgray;">
+            <p *ngFor="let emp of user.user_employment">
+               {{emp.company_name }}
+                                    
+            </p>
+          </td> 
+          <td style="padding-left: 25px; color:dimgray;">
+            <p *ngFor="let emp of user.user_employment">
+               {{emp.technology}}
+                                    
+            </p>
+          </td>
+          <td style="padding-left: 25px; color:dimgray;">
+            <p *ngFor="let emp of user.user_employment"  >
+               {{emp.start_date | date : 'yyyy-mm'}}
+                                    
+            </p>
+          </td> 
+          <td style="padding-left: 25px; color:dimgray;">
+            <p *ngFor="let emp of user.user_employment">
+               {{emp.end_date | date : 'yyyy-mm'}}
+                                    
+            </p>
+          </td>  
+
+
+
+         <td><button class="btn btn-danger" (click)="deleteUser(user.user_name)">Delete</button>
+          <button class="btn btn-primary" (click)="editUser(user)" >Edit</button></td>
+
+
+          </tr>
+        </tbody>
+        </table>
+        <button class="btn btn-primary" (click)="newUser()">New User</button>
+      </div>
+
+      
+        
+       
